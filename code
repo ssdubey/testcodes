@@ -1,0 +1,54 @@
+package stringDemo;
+
+import java.util.LinkedHashMap;
+import java.util.PriorityQueue;
+
+//class Sentence{
+//	String line;
+//}
+
+public class Live {
+
+	public static void parse(String s) {
+		String str = s.trim();
+
+		PriorityQueue<String> pq = new PriorityQueue<String>();
+
+		String[] arr = str.split(" ");
+
+		int i=0;
+		while(i < arr.length) {
+			pq.add(arr[i]);
+			i++;
+		}
+
+		i=0;
+		int size = pq.size();
+		while(i < size) {
+			System.out.println("    <word>" + pq.poll() + "</word>");
+			i++;
+		}
+	}
+
+	public static void main(String[] args) {
+		String str = "mary has a little lamb. welcome to mordor.";
+
+//		LinkedHashMap<Sentence, Integer> map = new LinkedHashMap<Sentence, Integer>();
+
+		System.out.println("<text>");
+		
+		while(!str.equalsIgnoreCase("")) {
+			int ind = str.indexOf('.');
+			
+			System.out.println("  <sentense>");
+			parse(str.substring(0, ind));
+			System.out.println("  </sentense>");
+			
+			str = str.substring(ind+1);
+		}
+		
+		System.out.println("</text>");
+
+	}
+}
+
